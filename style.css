@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  background-color: aliceblue;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: bisque;
+  color:darkslategrey;
+  padding: 40px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+}
+
+.add-button {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 20px 10px 20px;
+  border: solid darkslategrey 3px;
+  border-radius: 28px;
+}
+
+.add-button:hover {
+  background-color: rgb(247, 229, 208);
+}
