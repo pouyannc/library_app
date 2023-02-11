@@ -1,31 +1,111 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   background-color: aliceblue;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-style: normal;
+  font-variant: normal;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
   background-color: bisque;
   color:darkslategrey;
   padding: 40px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 36px;
-  font-style: normal;
-  font-variant: normal;
   font-weight: 700;
   line-height: 26.4px;
 }
 
 .add-button {
   font-size: 18px;
+  color:darkslategrey;
   font-weight: 500;
+  text-align: center;
+  top:auto;
   padding: 10px 20px 10px 20px;
   border: solid darkslategrey 3px;
   border-radius: 28px;
+  cursor: pointer;
+  min-width: 120px;
+  max-width: 120px;
+  background-color: bisque;
+  line-height: 26.4px;
 }
 
 .add-button:hover {
   background-color: rgb(247, 229, 208);
 }
+
+.collection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.book-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 18px;
+  align-items: center;
+  background-color: rgb(209, 233, 207);
+  min-width: 200px;
+  max-width: 200px;
+  max-height: 300px;
+  min-height: 300px;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.remove-button {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  border: solid rgb(117, 3, 3) 3px;
+  border-radius: 28px;
+  min-width: 60px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: rgb(240, 214, 217);
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.book-form {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 20px;
+  right: 6px;
+  max-width: 240px;
+  background-color: bisque;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.book-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+

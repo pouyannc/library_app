@@ -1,4 +1,5 @@
 const myLibrary = [];
+const libDisplay = document.querySelector('.collection');
 
 function Book(title, author, page, read) {
   this.title = title;
@@ -7,26 +8,24 @@ function Book(title, author, page, read) {
   this.read = read;
 }
 
-function addBookToLibrary() {
-  myLibrary.push(new Book('"The Handmaid\'s Tale"', 'Margaret Atwood', `Pages: ${311}`, false));
+function removeBook(e) {
+  const book = e.srcElement.parentElement.parentElement;
+  book.remove();
 }
 
-const libDisplay = document.querySelector('.collection');
-const addButton = document.querySelector('.add-button');
-
-addBookToLibrary();
-
-myLibrary.forEach((book, i) => {
+function createBookPanel(book) {
   const bookPanel = libDisplay
     .appendChild(
-      Object.assign(
-        document.createElement('div'),
-        { className: 'book-panel' },
-      ),
+      Object.assign(document.createElement('div'), { className: 'book-panel' }),
+    );
+
+  const infoContainer = bookPanel
+    .appendChild(
+      Object.assign(document.createElement('div'), { className: 'info-container' }),
     );
 
   Object.values(book).forEach((prop) => {
-    bookPanel.appendChild(
+    infoContainer.appendChild(
       Object.assign(
         document.createElement('div'),
         {
@@ -41,9 +40,42 @@ myLibrary.forEach((book, i) => {
     Object.assign(
       document.createElement('div'),
       {
+        className: 'remove-container',
+      },
+    ),
+  ).appendChild(
+    Object.assign(
+      document.createElement('div'),
+      {
         className: 'remove-button',
         innerHTML: 'Remove',
       },
     ),
   );
-});
+
+  document.querySelectorAll('.remove-button').forEach((b) => b.addEventListener('click', removeBook));
+}
+
+function addBookToLibrary(bookObj) {
+  myLibrary.push(bookObj);
+}
+
+function createBook() {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('read').value;
+  const book = new Book(`"${title}"`, author, `${pages} Pages`, read);
+  document.querySelector('.book-form-container').reset();
+  addBookToLibrary(book);
+  createBookPanel(book);
+}
+
+addBookToLibrary();
+
+document.getElementById('open-form').addEventListener('click', () => { document.querySelector('.book-form').style.display = 'flex'; });
+document.getElementById('close-btn').addEventListener('click', () => { document.querySelector('.book-form').style.display = 'none'; });
+document.getElementById('submit-btn').addEventListener('click', createBook);
+
+// to do: remove book from myLibrary array in remove book function,
+// don't allow form to be submitted with empty spaces
